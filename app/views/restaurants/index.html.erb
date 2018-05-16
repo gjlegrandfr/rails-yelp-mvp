@@ -1,7 +1,15 @@
-<ul class="list-group">
-<% @restaurants.each do |restaurant| %>
-  <li class="list-group-item">
-    <%= link_to restaurant.name, restaurant_path(restaurant) %>
-  </li>
-<% end %>
-</ul>
+  <div class="row">
+    <% @restaurants.each do |restaurant| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= asset_path "restaurant_#{(0..5).to_a.sample}.jpeg" %>)">
+        <div class="card-category"><%= restaurant.category %></div>
+        <div class="card-description">
+          <h2><%= restaurant.name %></h2>
+          <p><%= restaurant.address %></p>
+          <p><%= restaurant.phone_number %></p>
+        </div>
+        <%= link_to restaurant.name, restaurant_path(restaurant), class: "card-link" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
